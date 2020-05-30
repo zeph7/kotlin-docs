@@ -2,6 +2,15 @@
 
 ## for Loop
 
+* Kotlin's loops are similar to Python's. for iterates over anything that is iterable (anything that has an iterator() function that provides an Iterator object), or anything that is itself an iterator:
+
+```kotlin
+val names = listOf("Anne", "Peter", "Jeff")
+for (name in names) {
+    println(name)
+}
+```
+
 ```kotlin
 fun main(args: Array<String>){
     var i: Int
