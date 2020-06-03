@@ -3,7 +3,7 @@
 ## Working with nulls
 
 * A variable that doesn't refer to anything refers to `null`
-* `null` is not an object - it's just a <i>keyword<i/> that is used to make a variable refer to nothing or to check if it does
+* `null` is not an object - it's just a <i>keyword</i> that is used to make a variable refer to nothing or to check if it does
 * A variable cannot actually be null unless it's been declared to allow for null, which you do by suffixing the type name with `?`
 
 For example:
@@ -46,7 +46,7 @@ produce null; otherwise, it will return the result of `x.y().z.w()`
 
 ## Elvis operator
 
-* `x ?: y` evaluates `x`, which becomes the result of the expression unless it's null, in which case you'll get `y` instead 
+* `x ?: y` evaluates `x`, which becomes the result of the expression unless it's null, in which case you'll get `y` instead. 
 You can even use it to perform an early return in case of null:
 
 ```kotlin
@@ -54,12 +54,11 @@ val z = x ?: return y
 ```
 
 * This will assign `x` to `z` if `x` is non-null, but if it is null, the entire function that contains this expression will stop and return 
-`y` (this works because return is also an expression, and if it is evaluated, it evaluates its argument and then makes the containing 
-function return the result)
+`y`
 
 ## Not-null assertion operator
 
-* Sometimes, you're in a situation where you have a value x that you know is not null, but the compiler doesn't realize it
+* Sometimes, you're in a situation where you have a value `x` that you know is not null, but the compiler doesn't realize it
 * This can legitimately happen when you're interacting with Java code, but if it happens because your code's logic is more complicated 
 than the compiler's ability to reason about it, you should probably restructure your code
 * If you can't convince the compiler, you can resort to saying `x!!` to form an expression that produces the value of `x`, but whose 
@@ -73,7 +72,14 @@ val y: String = x!!
 * It can of course be done as a single expression: `val x = javaFunctionThatYouKnowReturnsNonNull()!!`
 * `!!` will raise a `NullPointerException` if the value actually is null
 * So you could also use it if you really need to call a particular function and would rather have an exception if there's no object 
-to call it on (`maybeNull!!.importantFunction()`)
+to call it on (`maybeNull!!.importantFunction()`), although a better solution (because an NPE isn't very informational) is this:
+
+```kotlin
+val y: String = x ?: throw SpecificException("Useful message")
+y.importantFunction()
+```
+
+
 
 
 
