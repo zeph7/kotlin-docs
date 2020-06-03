@@ -1,6 +1,6 @@
 # Packages and imports
 
-# Packages
+## Packages
 
 * Every Kotlin file should belong to a <i>package</i>
 * The package declaration must go on the top of the file:
